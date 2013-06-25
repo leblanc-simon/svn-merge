@@ -1,0 +1,36 @@
+{
+    "name": "leblanc-simon/svn-merge",
+    "description": "Application de gestion de merge",
+    "version": "1.0.0",
+    "homepage": "http://github.com/leblanc-simon/svn-merge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Leblanc",
+            "email": "contact@leblanc-simon.eu",
+            "homepage": "http://www.leblanc-simon.fr",
+            "role": "Developer"
+        }
+    ],
+    
+    "type": "application",
+    
+    "autoload": {
+        "psr-0": {
+            "SvnMerge": "src/"
+        }
+    },
+
+    "require": {
+        "php": ">=5.3.4",
+
+        "symfony/finder": "2.3.*",
+        "symfony/console": "2.3.*"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+
+    "minimum-stability": "dev"
+}
