@@ -1,7 +1,7 @@
 <?php
 
 if(!Phar::canWrite()) {
-    echo 'Unable to write phar, phar.readonly must be set to zero in your php.ini otherwise use: $ php -dphar.readonly=0 empir <command> ...';
+    echo 'Unable to write phar, phar.readonly must be set to zero in your php.ini otherwise use: $ php -dphar.readonly=0 build-phar.php <command> ...';
     exit(1);
 }
 
