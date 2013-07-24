@@ -10,8 +10,6 @@
 
 namespace SvnMerge\Task;
 
-use SvnMerge\Svn;
-
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputInterface;
 
