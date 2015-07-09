@@ -54,6 +54,58 @@ svn-merge project:show [project name]
 svn-merge command:show [project name] [direction] [commits number]
 ```
 
+Autocomplete Command Line
+-------------------------
+
+Add a file ```svn-merge``` into the directory ```/etc/bash_completion.d/``` with this content :
+
+```bash
+_svn_merge() {
+    local choices current
+
+    case "$COMP_CWORD" in
+        1)
+            choices='command:show project:list project:show'
+            ;;
+        2)
+            current_command=${COMP_WORDS[1]}
+            case $current_command in
+                'command:show')
+                    choices=`svn-merge project:list | grep -E -e "^  " | awk '{print $1}'`
+                    ;;
+                'project:list')
+                    choices=()
+                    ;;
+                'project:show')
+                    choices=`svn-merge project:list | grep -E -e "^  " | awk '{print $1}'`
+                    ;;
+                *)
+                    choices=''
+                    ;;
+            esac
+            ;;
+        3)
+            current_command=${COMP_WORDS[1]}
+            current_project=${COMP_WORDS[2]}
+            if [ $current_command != 'command:show' ]; then
+                choices=''
+            else
+                choices=`svn-merge project:show  ${current_project} | grep -E -e "^  " | awk '{print $1}'`
+            fi
+            ;;
+        *)
+            choices=()
+            ;;
+    esac
+
+    current=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W '$choices' -- $current) )
+    COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+}
+
+complete -F _svn_merge svn-merge
+```
+
 Thanks
 ------
 
