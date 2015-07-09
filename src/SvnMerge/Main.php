@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -14,7 +15,7 @@ use Symfony\Component\Console\Application;
 
 class Main
 {
-    static public function run()
+    public static function run()
     {
         $application = new Application();
 

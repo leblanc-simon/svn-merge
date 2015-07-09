@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -14,7 +15,6 @@ use SvnMerge\Config;
 use SvnMerge\Project;
 use SvnMerge\Svn;
 use SvnMerge\File;
-
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,7 +36,6 @@ class BaseCommand extends Command
             ->addArgument('direction', InputArgument::REQUIRED, 'The direction of the merge')
             ->addArgument('commits', InputArgument::REQUIRED, 'The list of the commits to merge (format : 1,3,6,8-10)');
     }
-
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -13,7 +14,6 @@ namespace SvnMerge\Task;
 use SvnMerge\Config;
 use SvnMerge\Project;
 use SvnMerge\File;
-
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,7 +26,6 @@ class ProjectList extends Command
             ->setName('project:list')
             ->setDescription('List all availables projects');
     }
-
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {

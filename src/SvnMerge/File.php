@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -12,7 +13,7 @@ namespace SvnMerge;
 
 class File
 {
-    static public function convertPath($path)
+    public static function convertPath($path)
     {
         if (substr($path, 0, 2) === '~/') {
             return getenv('HOME').DIRECTORY_SEPARATOR.substr($path, 2);

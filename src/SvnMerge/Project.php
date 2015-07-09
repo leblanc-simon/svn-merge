@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -38,24 +39,20 @@ class Project
         $this->parseUserConfig();
     }
 
-
     /**
-     * Return the availables directions names
+     * Return the availables directions names.
      *
-     * @return  array   the availables directions names
-     * @access  public
+     * @return array the availables directions names
      */
     public function getAvailableDirections()
     {
         return array_keys($this->directions);
     }
 
-
     public function getUsername()
     {
         return $this->username;
     }
-
 
     public function getPassword()
     {
@@ -91,16 +88,16 @@ class Project
         return $this->description;
     }
 
-
     /**
-     * Parse all availables projects and return them
+     * Parse all availables projects and return them.
      *
-     * @param   string  $main_config_dir    The main configuration directory to parse
-     * @return  array<Project>              An array with all availables projects
-     * @access  public
+     * @param string $main_config_dir The main configuration directory to parse
+     * @param string|null $user_config The user configuration to load
+     *
+     * @return array<Project> An array with all availables projects
      * @static
      */
-    static public function getAll($main_config_dir, $user_config = null)
+    public static function getAll($main_config_dir, $user_config = null)
     {
         $main_finder = new Finder();
         $main_finder
@@ -112,21 +109,19 @@ class Project
 
         $projects = array();
         foreach ($main_finder as $file) {
-            $projects[] = new Project($file->getRealpath(), $user_config);
+            $projects[] = new self($file->getRealpath(), $user_config);
         }
 
         return $projects;
     }
 
-
     /**
-     * Parse the ini file to get the informations
+     * Parse the ini file to get the informations.
      *
-     * @throws  \SvnMerge\Exception\File    If the file isn't readable
-     * @throws  \SvnMerge\Exception\Ini     If the file isn't a ini file
-     * @throws  \SvnMerge\Exception\Ini     If the ini doesn't contains basic informations
-     * @throws  \SvnMerge\Exception\Ini     If the ini doesn't contains direction informations
-     * @access  private
+     * @throws \SvnMerge\Exception\File If the file isn't readable
+     * @throws \SvnMerge\Exception\Ini  If the file isn't a ini file
+     * @throws \SvnMerge\Exception\Ini  If the ini doesn't contains basic informations
+     * @throws \SvnMerge\Exception\Ini  If the ini doesn't contains direction informations
      */
     private function parseFile()
     {
@@ -155,24 +150,22 @@ class Project
                 }
 
                 $direction_object = new \stdClass();
-                $direction_object->dir          = $datas['dir'];
-                $direction_object->from         = $datas['from'];
-                $direction_object->message      = $datas['message'];
-                $direction_object->description  = (isset($datas['description']) === true) ? $datas['description'] : null;
+                $direction_object->dir = $datas['dir'];
+                $direction_object->from = $datas['from'];
+                $direction_object->message = $datas['message'];
+                $direction_object->description = (isset($datas['description']) === true) ? $datas['description'] : null;
 
                 $this->directions[$direction] = $direction_object;
             }
         }
     }
 
-
     /**
-     * Parse the ini file to get the user informations
+     * Parse the ini file to get the user informations.
      *
-     * @throws  \SvnMerge\Exception\File    If the file isn't readable
-     * @throws  \SvnMerge\Exception\Ini     If the file isn't a ini file
-     * @throws  \SvnMerge\Exception\Ini     If the ini doesn't contains auth informations
-     * @access  private
+     * @throws \SvnMerge\Exception\File If the file isn't readable
+     * @throws \SvnMerge\Exception\Ini  If the file isn't a ini file
+     * @throws \SvnMerge\Exception\Ini  If the ini doesn't contains auth informations
      */
     private function parseUserConfig()
     {

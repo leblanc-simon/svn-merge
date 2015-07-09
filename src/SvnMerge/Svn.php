@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -29,24 +30,20 @@ class Svn
         $this->generateCommands($direction);
     }
 
-
     /**
-     * Return the commands to execute for merge commits
+     * Return the commands to execute for merge commits.
      * 
-     * @return  string      the commands to execute
-     * @access  public
+     * @return string the commands to execute
      */
     public function show()
     {
         return implode(' && \\'."\n", $this->commands);
     }
 
-
     /**
-     * Execute the commands to apply the merge (update - merge - commit)
+     * Execute the commands to apply the merge (update - merge - commit).
      * 
-     * @throws  \SvnMerge\Exception\Command     If a command failed
-     * @access  public
+     * @throws \SvnMerge\Exception\Command If a command failed
      */
     public function exec()
     {
@@ -62,13 +59,11 @@ class Svn
         }
     }
 
-
     /**
      * Generate the list of the commit wanted in the merge 
-     * (for merge command and the message)
+     * (for merge command and the message).
      *
-     * @param   string  $commits    All commit numbers wanted (1-5,10,100 format)
-     * @access  private
+     * @param string $commits All commit numbers wanted (1-5,10,100 format)
      */
     private function generateCommitNumber($commits)
     {
@@ -95,11 +90,8 @@ class Svn
         $this->commit_number_message = substr($this->commit_number_message, 0, -2);
     }
 
-
     /**
-     * Generate all commands required for a merge
-     *
-     * @access  private
+     * Generate all commands required for a merge.
      */
     private function generateCommands()
     {
@@ -122,12 +114,10 @@ class Svn
         $this->commands[] = 'svn commit'.$login_pass.' -m '.escapeshellarg('Merge des revisions '.$this->commit_number_message.' '.$message);
     }
 
-
     /**
-     * Build the login / password arguments
+     * Build the login / password arguments.
      *
-     * @return  string  The arguments with login / password if there are defined
-     * @access  private
+     * @return string The arguments with login / password if there are defined
      */
     private function buildLogin()
     {

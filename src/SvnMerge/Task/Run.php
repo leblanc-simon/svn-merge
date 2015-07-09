@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the SvnMerge package.
  *
@@ -15,7 +16,6 @@ use Symfony\Component\Console\Input\InputInterface;
 
 class Run extends BaseCommand
 {
-
     protected function configure()
     {
         parent::configure();
@@ -24,7 +24,6 @@ class Run extends BaseCommand
             ->setName('command:run')
             ->setDescription('Run the svn merge command');
     }
-
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
