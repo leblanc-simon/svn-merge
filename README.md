@@ -3,6 +3,8 @@ SvnMerge
 
 Tools to simplify the merge on a Subversion projects
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/eccdf842-81e0-497d-8819-21023c0f2040/mini.png)](https://insight.sensiolabs.com/projects/eccdf842-81e0-497d-8819-21023c0f2040)
+
 Installation
 ------------
 
